@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.page(params[:page])
+    @tasklists = @user.tasklists.order('created_at DESC').page(params[:page])
+    counts(@user)
   end
 
   def show
